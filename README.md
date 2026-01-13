@@ -1,2 +1,1 @@
-# prize
-微服务接入sdk-
+# speedy框架
