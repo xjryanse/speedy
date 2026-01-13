@@ -1,18 +1,18 @@
 <?php
 namespace xjryanse\speedy\core;
 
-use speedy\facade\Route;
-use speedy\facade\Cache;
-use speedy\logic\Arrays;
-use speedy\logic\Strings;
-use speedy\logic\Url;
-use speedy\interfaces\RqParamsInterface;
+use xjryanse\speedy\facade\Route;
+use xjryanse\speedy\facade\Cache;
+use xjryanse\speedy\logic\Arrays;
+use xjryanse\speedy\logic\Strings;
+use xjryanse\speedy\logic\Url;
+use xjryanse\speedy\interfaces\RqParamsInterface;
 use Exception;
 /**
  * 请求入参
  */
 class Request{
-    use \speedy\traits\InstTrait;
+    use \xjryanse\speedy\traits\InstTrait;
     
     protected $rqParamInst;
     
