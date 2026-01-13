@@ -16,10 +16,10 @@ trait StaticModelTrait {
     public static function cacheMt(){
         if (property_exists(static::class, 'cacheMt') && static::$cacheMt = 'apcu') {
             // apcu缓存
-            return '\speedy\facade\Cache';
+            return '\xjryanse\speedy\facade\Cache';
         }
         // redis缓存
-        return '\speedy\facade\Cache';
+        return '\xjryanse\speedy\facade\Cache';
     }
     
     /**
