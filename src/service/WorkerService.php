@@ -37,6 +37,7 @@ class WorkerService {
      * 消息逻辑
      */
     public static function onMsgLogic($conn, $data){
+        $startTs = microtime(true) * 1000;
         // 一个url路由，一个传递参数
         $reqArr     = json_decode(trim($data), true);            
         $url        = Arrays::value($reqArr, 'url');
@@ -57,16 +58,19 @@ class WorkerService {
         $logic = '\\app\\'.$uModule.'\\logic\\'. ucfirst($uController).'Logic';
         $resp = $logic::$uAction($param);
 
-        $conn->send(json_encode($resp));
+        $endTs = microtime(true) * 1000;
+        $res['ts'] = round($endTs) - round($startTs);
+
+        $respJson = static::response(0, '获取数据成功', $resp, $res);
+        return $conn->send($respJson);
     }
     
 
-    public static function response($code, $msg, $data = []){
-        $res = [
-            'code'  => $code,
-            'msg'   => $msg,
-            'data'  => $data
-        ];
+    public static function response($code, $msg, $data = [], $res = []){
+        $res['code']    = $code;
+        $res['msg']     = $msg;
+        $res['data']    = $data;
+
         return json_encode($res);
     }
     
