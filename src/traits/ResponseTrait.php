@@ -113,6 +113,7 @@ trait ResponseTrait {
      * @return string
      */
     private static function devModeRes() {
+        return [];
         global $stime,$ctime;
         
         if (!ConfigService::config('isDevMode')) {
