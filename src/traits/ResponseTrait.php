@@ -18,7 +18,7 @@ trait ResponseTrait {
      * 成功返回
      */
     protected static function succReturn($msg = '请求成功', $data = '', $res = []) {
-        // header('Content-Type: application/json; charset=utf-8');
+        //header('Content-Type: application/json; charset=utf-8');
         $res['code'] = 0;     //20191205 数据返回的基本结构   三个字段   code=0 ,message='提示', data=>{}
         $res['message'] = $msg;
         $res['data'] = $data;
