@@ -11,7 +11,7 @@ use xjryanse\speedy\facade\CacheD3;
 use xjryanse\speedy\logic\Network;
 use orm\host\HostCov;
 use orm\host\HostLock;
-use service\DbService;
+use xjryanse\speedy\service\DbService;
 use Exception;
 
 /**
