@@ -62,7 +62,10 @@ class WorkerService {
         $res['ts'] = round($endTs) - round($startTs);
 
         $respJson = static::response(0, '获取数据成功', $resp, $res);
-        return $conn->send($respJson);
+        $conn->send($respJson);
+        // 20260114:关闭连接，避免超时
+        $conn->close();
+        return true;
     }
     
 
