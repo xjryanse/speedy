@@ -8,6 +8,7 @@ use xjryanse\speedy\facade\Request;
 
 /**
  * 缓存(不可被用户清理的部分)
+ * 2026年1月16日：不需要区分站点
  */
 class CacheD3 {
 
@@ -17,8 +18,10 @@ class CacheD3 {
      * 20250226:key前缀，用于区分
      */
     protected static function preFix() {
-        $host = Request::host();
-        return md5($host);
+        // 2026年1月16日：改写前缀，兼容workerman
+        return md5(ROOT_PATH);
+        // $host = Request::host();
+        // return md5($host);
     }
 
     /**
