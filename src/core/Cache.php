@@ -17,8 +17,8 @@ class Cache {
      * 20250226:key前缀，用于区分
      */
     protected static function preFix() {
-        $host = Request::host();
-        return md5($host);
+        // 2026年1月16日：改写前缀，兼容workerman
+        return md5(ROOT_PATH);
     }
 
     /**
