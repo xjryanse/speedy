@@ -124,8 +124,8 @@ class DbOrm {
      * @param type $sql
      * @return type
      */
-    public function query($sql) {
-        return $this->db->query($sql);
+    public function query($sql, array $bind = []) {
+        return $this->db->query($sql, $bind);
     }
     
     public function execute($sql) {

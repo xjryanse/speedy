@@ -11,7 +11,7 @@ abstract class Base {
     abstract public function connect(array $config);
 
     // 抽象方法：执行查询
-    abstract public function query(string $query);
+    abstract public function query(string $query, array $bind=[]);
 
     // 抽象方法：关闭连接
     abstract public function close();

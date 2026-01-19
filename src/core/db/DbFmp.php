@@ -70,11 +70,18 @@ class DbFmp extends Base {
     
     
     // 抽象方法：执行查询
-    public function query(string $query){
-        // dump($query);
-        $stmt       = $this->cnn->query($query);
-        // 返回全部
+    public function query(string $query, array $bind =[]){
+        //2026年1月19日：改写支持参数绑定
+        $stmt = $this->cnn->prepare($query);
+        // 2. 核心修改：绑定参数并执行SQL，直接传入绑定数组即可
+        // 支持两种占位符：命名占位符 :id / 问号占位符 ? ，自动兼容
+        $stmt->execute($bind);
+        // 3. 保留你原有的返回格式：二维关联数组，业务层无感知
         $res = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+//        $stmt       = $this->cnn->query($query);
+//        // 返回全部
+//        $res = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $res;
     }
 

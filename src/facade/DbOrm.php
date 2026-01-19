@@ -42,9 +42,9 @@ class DbOrm extends Facade{
         return DbOrmSource::inst($source)->table($table)->instInit();
     }
     
-    public static function query($sql, $source){
+    public static function query($sql, $source, array $bind = []){
         // $source = DbOperate::tableNameDbSource($table);
-        return DbOrmSource::inst($source)->query($sql);
+        return DbOrmSource::inst($source)->query($sql, $bind);
     }
     
     public static function execute($sql, $source){

@@ -75,18 +75,18 @@ class Db {
      * @param string $query
      * @return type
      */
-    public function query(string $query){
+    public function query(string $query, array $bind = []){
         if ($this->cacheTime) {
             $cacheKey = $this->cacheKey($query);
-            $res = Cache::funcGet( $cacheKey, function() use ($query){
-                return $this->dbConnection->query($query);
+            $res = Cache::funcGet( $cacheKey, function() use ($query, $bind){
+                return $this->dbConnection->query($query, $bind);
             }, $this->cacheTime);
             // $this->cacheTime = 0;
             return $res;
         }
         // 20250305：记录历次执行sql
-        $res = Functions::execWithTime(function() use ($query){
-            return $this->dbConnection->query($query);
+        $res = Functions::execWithTime(function() use ($query, $bind){
+            return $this->dbConnection->query($query, $bind);
         });
         $this->sqlArr[] = '['.$res['timeDiff'].']'. $query;
         return $res['res'];
