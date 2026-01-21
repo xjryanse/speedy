@@ -37,7 +37,7 @@ class Redis{
      * @return type
      */
     public function rdInst() {
-        if(!$this->redis[0]){
+        if(!isset($this->redis[0])){
             $this->init($this->default);
         }
         return $this->redis[0];
@@ -47,7 +47,7 @@ class Redis{
      * 会话用实例：db1;
      */
     public function ssInst() {
-        if(!$this->redis[1]){
+        if(!isset($this->redis[1])){
             $conf       = $this->default;
             $conf['db'] = '1';
             $this->init($conf);
@@ -59,7 +59,7 @@ class Redis{
      * 系统缓存用实例：db3;
      */
     public function d3Inst() {
-        if(!$this->redis[3]){
+        if(!isset($this->redis[3])){
             $conf       = $this->default;
             $conf['db'] = '3';
             $this->init($conf);
