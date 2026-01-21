@@ -145,9 +145,8 @@ class DbOperate {
         if($dbId == 0){
             return config('database.dbEntry');
         } else {
-            throw new Exception('待开发');
+            return DbCnn::idInfo($dbId);
         }
-        return $conf;
     }
 
     /**

@@ -33,9 +33,13 @@ class Db {
     protected function __construct($dbSource = 0) {
         $this->uuid     = $dbSource;
         // 如果是dbEntry；直接取conf；
-        // 如果不是，根据当前端口
-        $this->dbConf   = DbOperate::sourceDbConf($dbSource);
-        
+        if(is_numeric($dbSource)){
+            $dbId           = $dbSource;
+            $this->dbConf   = DbOperate::idDbConf($dbId);
+        } else {
+            $this->dbConf   = DbOperate::sourceDbConf($dbSource);
+        }
+
         $env = Request::env();
         if($env == 'phpfpm'){
             $dbFpm      = new DbFmp();
