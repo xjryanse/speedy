@@ -24,7 +24,9 @@ class DbService {
     public static function dbConf($dbSource){
         $md5RPH = md5(ROOT_PATH);
         // 为了兼容cli下使用，增加md
-        $host = $_SERVER['SERVER_NAME'] ?: $md5RPH;
+        $host = isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] 
+                ? $_SERVER['SERVER_NAME'] 
+                : $md5RPH;
         $info = EntrySdk::hostBindInfo($host);
         if(!$info){
             
