@@ -135,6 +135,20 @@ class DbOperate {
 
         return $conf;
     }
+    /**
+     * 2026年1月21日
+     * @param type $dbId
+     * @return type
+     * @throws Exception
+     */
+    public static function idDbConf($dbId){
+        if($dbId == 0){
+            return config('database.dbEntry');
+        } else {
+            throw new Exception('待开发');
+        }
+        return $conf;
+    }
 
     /**
      * 用于替代show columns from 的sql语句

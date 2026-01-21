@@ -4,7 +4,7 @@ namespace xjryanse\speedy\facade;
 
 use xjryanse\speedy\Facade;
 /**
- * @see \speedy\core\Request
+ * @see \xjryanse\speedy\core\Request
  */
 class Request extends Facade{
 

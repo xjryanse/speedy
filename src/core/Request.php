@@ -66,7 +66,7 @@ class Request{
     }
     
     public function env(){
-        return $this->rqParamInst->env();
+        return $this->rqParamInst ? $this->rqParamInst->env() : '';
     }
     
     public function domain($port = false){

@@ -22,12 +22,19 @@ class DbOrm {
      * @param type $dbSource    20250213:默认业务库
      */
     protected function __construct($dbSource = 'dbBusi') {
+        $this->uuid     = $dbSource;
         // 20250216
         if(!$dbSource){
             throw new Exception('dbSource必须');
         }
-        $this->uuid     = $dbSource;
-        $this->db   = Db::inst($dbSource);
+        // todo:慢慢过渡只用dbId
+        if(is_numeric($dbSource)){
+            $dbId = $dbSource;
+            $this->db   = Db::inst($dbId);
+        } else {
+            $this->db   = Db::inst($dbSource);
+        }
+        
         $this->orm  = Orm::inst();
     }
     
