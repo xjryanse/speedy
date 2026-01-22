@@ -24,7 +24,7 @@ class DbOrm {
     protected function __construct($dbSource = 'dbBusi') {
         $this->uuid     = $dbSource;
         // 20250216
-        if(!$dbSource){
+        if(!$dbSource && $dbSource !== 0){
             throw new Exception('dbSource必须');
         }
         // todo:慢慢过渡只用dbId
