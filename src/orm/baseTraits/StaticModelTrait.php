@@ -3,8 +3,8 @@
 namespace xjryanse\speedy\orm\baseTraits;
 
 use xjryanse\speedy\facade\Cache;
-use xjryanse\speedy\logic\Arrays;
-use xjryanse\speedy\logic\Arrays2d;
+use xjryanse\phplite\logic\Arrays;
+use xjryanse\phplite\logic\Arrays2d;
 use Exception;
 /**
  * 运行环境

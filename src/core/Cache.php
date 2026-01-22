@@ -2,9 +2,9 @@
 
 namespace xjryanse\speedy\core;
 
-use xjryanse\speedy\facade\Redis;
-use xjryanse\speedy\logic\Strings;
-use xjryanse\speedy\facade\Request;
+use xjryanse\phplite\facade\Redis;
+use xjryanse\phplite\logic\Strings;
+use xjryanse\phplite\facade\Request;
 
 /**
  * 缓存

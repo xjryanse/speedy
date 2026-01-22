@@ -4,9 +4,9 @@ namespace xjryanse\speedy\orm;
 
 use xjryanse\speedy\core\Db;
 use xjryanse\speedy\facade\DbOrm;
-use xjryanse\speedy\logic\Arrays;
-use xjryanse\speedy\logic\Arrays2d;
-use xjryanse\speedy\logic\Strings;
+use xjryanse\phplite\logic\Arrays;
+use xjryanse\phplite\logic\Arrays2d;
+use xjryanse\phplite\logic\Strings;
 use xjryanse\speedy\facade\CacheD3;
 use xjryanse\speedy\logic\Network;
 use orm\host\HostCov;
