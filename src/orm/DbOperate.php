@@ -148,6 +148,19 @@ class DbOperate {
             return DbCnn::idInfo($dbId);
         }
     }
+    /**
+     * 2026年1月23日：单纯的转换动作
+     * @param string $dbConf
+     * @return string
+     */
+    public static function confWithLocalConvert($dbConf){
+        $isLocalHost    = Network::isLocalhostIp($dbConf['hostname']);
+        if($isLocalHost){
+            $dbConf['realHost'] = 'localhost';
+        }
+        return $dbConf;
+    }
+    
 
     /**
      * 用于替代show columns from 的sql语句

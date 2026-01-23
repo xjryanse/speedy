@@ -9,6 +9,7 @@ use xjryanse\speedy\core\dbpool\DbPoolWorker;
 
 /**
  * workerman环境下的数据库连接池
+ * 传统phpFpm也可以使用
  */
 class DbWorker extends Base {
     // 存储数据库连接的数组

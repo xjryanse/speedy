@@ -6,7 +6,7 @@ use PDO;
 use xjryanse\speedy\logic\Arrays;
 use xjryanse\speedy\logic\Network;
 /**
- * 数据库连接池
+ * 数据库连接池(传统fpm废弃，统一用DbWorker替代，在fpm也可以使用)
  */
 class DbFmp extends Base {
     // 单例
@@ -56,11 +56,11 @@ class DbFmp extends Base {
             // 禁用预查询模拟
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
-        $cnnStime = time();
+        // $cnnStime = time();
         
         $pdo = new PDO($this->dsn(), $this->dbConfig['username'], $this->dbConfig['password'], $options);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $cnnEtime = time();
+        // $cnnEtime = time();
         
         
         $this->cnn = $pdo;

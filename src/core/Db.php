@@ -35,11 +35,21 @@ class Db {
         // 如果是dbEntry；直接取conf；
         if(is_numeric($dbSource)){
             $dbId           = $dbSource;
-            $this->dbConf   = DbOperate::idDbConf($dbId);
+            // id获取原始的配置数据（转换前）
+            $dbConf     = DbOperate::idDbConf($dbId);
+            // 转换动作，如果是本地地址，转为localhost
+            $dbConf     = DbOperate::confWithLocalConvert($dbConf);
+            $this->dbConf   = $dbConf;
         } else {
             $this->dbConf   = DbOperate::sourceDbConf($dbSource);
         }
-
+        
+        // 被精简过了的       
+        $dbWorker      = new DbWorker();
+        $this->setCnn($dbWorker);
+        $this->connect($this->dbConf);
+        
+/*
         $env = Request::env();
         if($env == 'phpfpm'){
             $dbFpm      = new DbFmp();
@@ -50,6 +60,7 @@ class Db {
             $this->setCnn($dbWorker);
             $this->connect($this->dbConf);
         }
+*/
     }
     /**
      * 初始化；

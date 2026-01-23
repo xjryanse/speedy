@@ -1,7 +1,7 @@
 <?php
 namespace xjryanse\speedy\core\dbpool\worker;
 
-use xjryanse\speedy\logic\Arrays;
+use xjryanse\phplite\logic\Arrays;
 /**
  * 
  */
@@ -21,8 +21,10 @@ trait ConfTraits{
      * @return type
      */
     protected static function dsn($conf) {
+        $host           = Arrays::value($conf, 'realHost') ?: Arrays::value($conf, 'hostname');
+
         $arr    = [];
-        $arr[]  = 'mysql:host=' . $conf['hostname'];
+        $arr[]  = 'mysql:host=' . $host;
         $arr[]  = 'dbname=' . $conf['database'];
         $arr[]  = 'charset=' . $conf['charset'];
         $arr[]  = 'port=' . $conf['hostport'];

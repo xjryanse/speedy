@@ -78,7 +78,7 @@ trait PoolTraits{
      */
     public function putCnn($cnn, $config) {
         $dbKey  = static::confKey($config);
-        if($this->pools[$dbKey] && $this->pools[$dbKey]->count() >= 5){
+        if($this->pools && isset($this->pools[$dbKey]) && $this->pools[$dbKey] && $this->pools[$dbKey]->count() >= 5){
             // 超过5个就释放连接
             $this->releaseCnn($cnn);
             return false;
