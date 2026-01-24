@@ -37,13 +37,16 @@ class Db {
             $dbId           = $dbSource;
             // id获取原始的配置数据（转换前）
             $dbConf     = DbOperate::idDbConf($dbId);
+            if(!$dbConf){
+                throw new Exception('无数据库配置，请检查数据库id是否正确传入'.$dbSource);
+            }
             // 转换动作，如果是本地地址，转为localhost
-            $dbConf     = DbOperate::confWithLocalConvert($dbConf);
-            $this->dbConf   = $dbConf;
+            $dbConfFinal    = DbOperate::confWithLocalConvert($dbConf);
+            $this->dbConf   = $dbConfFinal;
         } else {
             $this->dbConf   = DbOperate::sourceDbConf($dbSource);
         }
-        
+
         // 被精简过了的       
         $dbWorker      = new DbWorker();
         $this->setCnn($dbWorker);
